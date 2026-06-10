@@ -1,0 +1,20 @@
+{
+  "name": "jarvis-bot",
+  "version": "1.0.0",
+  "description": "Your personal JARVIS Telegram bot",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0",
+    "sql.js": "^1.12.0",
+    "node-cron": "^3.0.3",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
