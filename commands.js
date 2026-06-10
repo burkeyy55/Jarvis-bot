@@ -31,7 +31,7 @@ function registerCommands(bot, CHAT_ID) {
   });
 
   // /tasks
-  bot.onText(/\/tasks/, (msg) => {
+  bot.onText(/\/tasks/, (m) => {
     if (String(msg.chat.id) !== String(CHAT_ID)) return;
     const tasks = db.getTodayTasks();
 
@@ -55,7 +55,7 @@ function registerCommands(bot, CHAT_ID) {
         .map(t => [{ text: `✅ Done: ${t.text}`, callback_data: `complete_task_${t.num}` }])
     };
 
-    let msg = `📋 *Today's Tasks*\n\n`;
+    let text = `📋 *Today's Tasks*\n\n`;
     taskList.forEach(t => {
       msg += `${t.done ? '✅' : '⬜'} ${t.text}\n`;
     });
@@ -132,7 +132,7 @@ function registerCommands(bot, CHAT_ID) {
     const customHabits = db.getCustomHabits();
     const allHabits = [...habits, ...customHabits.map(h => h.name)];
 
-    let msg2 = `📊 *Habit Streaks*\n\n`;
+    let statsMsg = `📊 *Habit Streaks*\n\n`;
     allHabits.forEach(h => {
       const streak = db.getHabitStreak(h);
       msg2 += `${streak > 0 ? '🔥' : '💤'} *${capitalize(h)}* — ${streak} day streak\n`;
